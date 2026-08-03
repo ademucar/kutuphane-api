@@ -1,0 +1,5 @@
+import { Injectable } from '@nestjs/common'; // Sınıfın NestJS dependency injection sistemi tarafından tanınmasını sağlamak için @Injectable dekoratörünü import ettim ki projede sağlayıcı (provider) olarak kullanılabilsin.[cite: 22]
+import { AuthGuard } from '@nestjs/passport'; // Rotaları koruyacak temel güvenlik kalkanını (AuthGuard) Passport paketinden dahil ettim ki controller metotlarının önüne set çekebileyim.[cite: 22]
+
+@Injectable() // Bu sınıfın NestJS kalkanı (guard) olarak framework tarafından belleğe alınacağını belirttim ki rotalarda @UseGuards() içinde çalışabilsin.[cite: 22]
+export class JwtAuthGuard extends AuthGuard('jwt') {} // Passport'un hazır 'jwt' stratejisini (bir önceki dosyada yazdığım JwtStrategy) kullanan JwtAuthGuard adında kendime özel bir sınıf oluşturdum ki rotalarda (controller) @UseGuards(JwtAuthGuard) diyerek sadece geçerli JWT token'ı olanların o metoda girmesine izin verebileyim. İçini boş bıraktım çünkü Passport'un varsayılan JWT kalkan mekanizması benim ihtiyaçlarımı tam olarak karşılıyor.[cite: 22]

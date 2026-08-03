@@ -1,0 +1,4 @@
+import { PartialType } from '@nestjs/swagger'; // NestJS Swagger (veya mapped-types) paketinden PartialType yardımcı fonksiyonunu getirdim ki mevcut bir DTO'daki tüm zorunlu alanları otomatik olarak opsiyonel (isteğe bağlı) hale getirebileyim.[cite: 32]
+import { CreateAuthorDto } from './create-author.dto'; // Güncelleme işlemi aslında yaratma işleminin bir türevi olacağı için baz alacağım temel CreateAuthorDto sınıfını içeri aktardım.[cite: 32]
+
+export class UpdateAuthorDto extends PartialType(CreateAuthorDto) {} // UpdateAuthorDto sınıfımı, CreateAuthorDto'yu PartialType içine sararak miras (extends) alacak şekilde oluşturdum ki yazar güncellerken yazım kurallarım (IsString vb.) aynen korunsun ancak hiçbir alan mecburi olmasın (kullanıcı sadece güncellemek istediği alanları gönderebilsin).[cite: 32]

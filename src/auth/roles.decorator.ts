@@ -1,0 +1,3 @@
+import { SetMetadata } from '@nestjs/common'; // Rotalara, controller'lara veya metotlara ekstra, gizli bilgiler (metadata) iliştirmek için NestJS'in SetMetadata yardımcı fonksiyonunu import ettim ki rol kontrollerinde bu bilgileri okuyabileyim.[cite: 23]
+
+export const Roles = (...roles: string[]) => SetMetadata('roles', roles); // "@Roles('ADMIN', 'USER')" şeklinde kullanabileceğim özel bir dekoratör tanımladım. Bu dekoratör, uygulandığı metodun arkasına gizlice 'roles' anahtarıyla istenen rol listesini kaydeder ki birazdan yazacağım RolesGuard, o rotaya kimlerin girme hakkı olduğunu bu gizli bilgiyi (metadata) okuyarak öğrenebilsin.[cite: 23]
